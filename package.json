@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/ChristianMurphy/json-schema-keyref/issues"
   },
-  "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme"
+  "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme",
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "eslint-config-google": "^0.6.0",
+    "eslint-plugin-ava": "^2.5.0",
+    "eslint-plugin-markdown": "^1.0.0-beta.2",
+    "eslint-plugin-node": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
 }
