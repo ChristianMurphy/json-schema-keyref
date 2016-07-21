@@ -1,1 +1,1 @@
-# json-schema-keyref
+# JSON Schema KeyRef

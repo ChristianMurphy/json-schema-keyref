@@ -1,0 +1,19 @@
+{
+  "name": "json-schema-keyref",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianMurphy/json-schema-keyref.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristianMurphy/json-schema-keyref/issues"
+  },
+  "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme"
+}
