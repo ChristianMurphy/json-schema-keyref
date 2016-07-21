@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ext js,md . && remark *.md -u remark-lint -q --no-stdout"
+    "test": "ava && eslint --ext js,md . && remark *.md -u remark-lint -q --no-stdout"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme",
   "devDependencies": {
+    "ava": "^0.15.2",
     "eslint": "^3.1.1",
     "eslint-config-google": "^0.6.0",
     "eslint-plugin-ava": "^2.5.0",
