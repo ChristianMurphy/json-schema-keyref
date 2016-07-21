@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint ."
+    "test": "eslint --ext js,md . && remark *.md -u remark-lint -q --no-stdout"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,9 @@
     "eslint-config-google": "^0.6.0",
     "eslint-plugin-ava": "^2.5.0",
     "eslint-plugin-markdown": "^1.0.0-beta.2",
-    "eslint-plugin-node": "^2.0.0"
+    "eslint-plugin-node": "^2.0.0",
+    "remark-cli": "^1.0.0",
+    "remark-lint": "^4.0.2"
   },
   "engines": {
     "node": ">=4.0.0"
