@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noImplicitAny": true,
+    "outDir": "../dist",
     "removeComments": true,
     "sourceMap": true,
-    "target": "es5",
-    "outDir": "../dist"
+    "target": "es5"
   },
   "files": [
     "index.ts"
