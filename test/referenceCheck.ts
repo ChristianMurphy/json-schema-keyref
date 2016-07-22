@@ -1,9 +1,7 @@
-import {IKeysAndKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
+import {IKeyKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
 import test from 'ava';
 
-interface IRefenceCheckInput extends IKeysAndKeyrefPair<IQueryResult[]> {}
-
-function referenceCheckMacro(t, input: IRefenceCheckInput, expected: IValidationResult) {
+function referenceCheckMacro(t, input: IKeyKeyrefPair<IQueryResult[]>, expected: IValidationResult) {
   const result = referenceCheck(input.keyrefs, input.keys);
   t.deepEqual(result, expected);
 }

@@ -1,6 +1,7 @@
 ### Custom ###
-typings
 dist
+docs
+typings
 *.js
 *.map.js
 
