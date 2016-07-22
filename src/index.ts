@@ -1,14 +1,14 @@
-export interface QueryResult {
-  path: string[],
-  value: string
+export interface IQueryResult {
+  path: string[];
+  value: string;
 }
 
-export interface ValidationResult {
-  isValid: boolean,
-  errors: QueryResult[]
+export interface IValidationResult {
+  isValid: boolean;
+  errors: IQueryResult[];
 }
 
-function querySorter(a: QueryResult, b: QueryResult): number {
+function querySorter(a: IQueryResult, b: IQueryResult): number {
   if (a.value < b.value) {
     return -1;
   } else if (a.value > b.value) {
@@ -18,12 +18,12 @@ function querySorter(a: QueryResult, b: QueryResult): number {
   }
 }
 
-export function referenceCheck(keyrefs: QueryResult[], keys: QueryResult[]): ValidationResult {
+export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): IValidationResult {
   keyrefs.sort(querySorter);
   keys.sort(querySorter);
-  
+
   let isValid = true;
-  const errors: QueryResult[] = []; 
+  const errors: IQueryResult[] = [];
   let keyIndex = 0;
 
   for (const reference of keyrefs) {
@@ -44,6 +44,6 @@ export function referenceCheck(keyrefs: QueryResult[], keys: QueryResult[]): Val
 
   return {
     isValid,
-    errors
+    errors,
   };
 }

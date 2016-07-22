@@ -1,12 +1,12 @@
+import {IQueryResult, IValidationResult, referenceCheck} from '../src';
 import test from 'ava';
-import {referenceCheck, QueryResult, ValidationResult} from '../src'
 
-interface RefenceCheckInput {
-  key: QueryResult[],
-  keyref: QueryResult[]
+interface IRefenceCheckInput {
+  key: IQueryResult[];
+  keyref: IQueryResult[];
 }
 
-function referenceCheckMacro(t, input: RefenceCheckInput, expected: ValidationResult) {
+function referenceCheckMacro(t, input: IRefenceCheckInput, expected: IValidationResult) {
   const result = referenceCheck(input.keyref, input.key);
   t.deepEqual(result, expected);
 }
@@ -18,19 +18,19 @@ test(
     key: [
       {
         path: [],
-        value: 'a'
-      }
+        value: 'a',
+      },
     ],
     keyref: [
       {
         path: [],
-        value: 'a'
-      }
-    ]
+        value: 'a',
+      },
+    ],
   },
   {
+    errors: [],
     isValid: true,
-    errors: []
   }
 );
 
@@ -39,11 +39,11 @@ test(
   referenceCheckMacro,
   {
     key: [],
-    keyref: []
+    keyref: [],
   },
   {
+    errors: [],
     isValid: true,
-    errors: []
   }
 );
 
@@ -54,28 +54,28 @@ test(
     key: [
       {
         path: [],
-        value: 'a'
+        value: 'a',
       },
       {
         path: [],
-        value: 'b'
-      }
+        value: 'b',
+      },
     ],
     keyref: [
       {
         path: [],
-        value: 'c'
-      }
-    ]
+        value: 'c',
+      },
+    ],
   },
   {
-    isValid: false,
     errors: [
       {
         path: [],
-        value: 'c'
-      }
-    ]
+        value: 'c',
+      },
+    ],
+    isValid: false,
   }
 );
 
@@ -86,43 +86,43 @@ test(
     key: [
       {
         path: [],
-        value: 'a'
+        value: 'a',
       },
       {
         path: [],
-        value: 'b'
-      }
+        value: 'b',
+      },
     ],
     keyref: [
       {
         path: [],
-        value: 'c'
+        value: 'c',
       },
       {
         path: [],
-        value: 'd'
+        value: 'd',
       },
       {
         path: [],
-        value: 'e'
-      }
-    ]
+        value: 'e',
+      },
+    ],
   },
   {
-    isValid: false,
     errors: [
       {
         path: [],
-        value: 'c'
+        value: 'c',
       },
       {
         path: [],
-        value: 'd'
+        value: 'd',
       },
       {
         path: [],
-        value: 'e'
-      }
-    ]
+        value: 'e',
+      },
+    ],
+    isValid: false,
   }
 );

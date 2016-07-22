@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p src",
     "pretest": "tsc -p test && tsc -p src",
-    "test": "ava && remark *.md -u remark-lint -q --no-stdout"
+    "test": "ava && tslint src/*.ts test/*.ts && remark *.md -u remark-lint -q --no-stdout"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "ava": "^0.15.2",
     "remark-cli": "^1.0.0",
     "remark-lint": "^4.0.2",
+    "tslint": "^3.13.0",
     "typescript": "^1.8.10"
   },
   "engines": {
