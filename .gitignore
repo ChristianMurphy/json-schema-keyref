@@ -1,3 +1,8 @@
+### Custom ###
+dist
+*.js
+*.map.js
+
 # Created by https://www.gitignore.io/api/node
 
 ### Node ###

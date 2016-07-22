@@ -1,9 +1,0 @@
-extends:
-  - plugin:ava/recommended
-plugins:
-  - ava
-rules:
-  node/no-unpublished-require:
-    - error
-    - allowModules:
-      - ava

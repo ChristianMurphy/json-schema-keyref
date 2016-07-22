@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ava && eslint --ext js,md . && remark *.md -u remark-lint -q --no-stdout"
+    "build": "tsc -p src",
+    "pretest": "tsc -p test && tsc -p src",
+    "test": "ava && remark *.md -u remark-lint -q --no-stdout"
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,9 @@
   "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme",
   "devDependencies": {
     "ava": "^0.15.2",
-    "eslint": "^3.1.1",
-    "eslint-config-google": "^0.6.0",
-    "eslint-plugin-ava": "^2.5.0",
-    "eslint-plugin-markdown": "^1.0.0-beta.2",
-    "eslint-plugin-node": "^2.0.0",
     "remark-cli": "^1.0.0",
-    "remark-lint": "^4.0.2"
+    "remark-lint": "^4.0.2",
+    "typescript": "^1.8.10"
   },
   "engines": {
     "node": ">=4.0.0"
