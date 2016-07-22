@@ -1,18 +1,33 @@
 {
   "name": "json-schema-keyref",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "a json schema extension that validates key references",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "typings install && tsc -p src",
-    "pretest": "npm run build && tsc -p test",
+    "build": "rimraf dist && typings install && tsc -p src",
+    "prepublish": "npm test && npm run build",
+    "pretest": "tsc -p test",
     "test": "ava && tslint src/*.ts test/*.ts && remark *.md -u remark-lint -q --no-stdout"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ChristianMurphy/json-schema-keyref.git"
   },
-  "author": "",
+  "keywords": [
+    "json",
+    "schema",
+    "key",
+    "keyref",
+    "validator"
+  ],
+  "author": {
+    "name": "Christian Murphy",
+    "email": "Christian.Murphy.42@gmail.com",
+    "url": "https://github.com/ChristianMurphy"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ChristianMurphy/json-schema-keyref/issues"
@@ -25,6 +40,7 @@
     "ava": "^0.15.2",
     "remark-cli": "^1.0.0",
     "remark-lint": "^4.0.2",
+    "rimraf": "^2.5.3",
     "tslint": "^3.13.0",
     "typescript": "^1.8.10",
     "typings": "^1.3.2"
