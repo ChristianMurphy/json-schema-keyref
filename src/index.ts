@@ -98,20 +98,20 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
   let isValid = true;
   const errors: IQueryResult[] = [];
   let keyIndex = 0;
+  let keyrefIndex = 0;
 
-  for (const reference of keyrefs) {
-    if (reference.value === keys[keyIndex].value) {
-      continue;
-    } else if (reference.value < keys[keyIndex].value) {
-      if (keyIndex < keys.length) {
-        keyIndex++;
-      } else {
-        isValid = false;
-        errors.push(reference);
-      }
-    } else {
+  while (keyrefIndex < keyrefs.length) {
+    const key = keys[keyIndex];
+    const reference = keyrefs[keyrefIndex];
+
+    if (keyIndex >= keys.length || reference.value < key.value) {
+      keyrefIndex++;
       isValid = false;
       errors.push(reference);
+    } else if (reference.value === key.value) {
+      keyrefIndex++;
+    } else {
+      keyIndex++;
     }
   }
 

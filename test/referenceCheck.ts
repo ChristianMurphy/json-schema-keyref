@@ -30,6 +30,123 @@ test(
 );
 
 test(
+  'keys can be found in ordered lists',
+  referenceCheckMacro,
+  {
+    keyrefs: [
+      {
+        path: [],
+        value: 'a',
+      },
+      {
+        path: [],
+        value: 'b',
+      },
+      {
+        path: [],
+        value: 'c',
+      },
+    ],
+    keys: [
+      {
+        path: [],
+        value: 'a',
+      },
+      {
+        path: [],
+        value: 'b',
+      },
+      {
+        path: [],
+        value: 'c',
+      },
+    ],
+  },
+  {
+    errors: [],
+    isValid: true,
+  }
+);
+
+test(
+  'keys can be found in opposting ordered lists',
+  referenceCheckMacro,
+  {
+    keyrefs: [
+      {
+        path: [],
+        value: 'a',
+      },
+      {
+        path: [],
+        value: 'b',
+      },
+      {
+        path: [],
+        value: 'c',
+      },
+    ],
+    keys: [
+      {
+        path: [],
+        value: 'c',
+      },
+      {
+        path: [],
+        value: 'b',
+      },
+      {
+        path: [],
+        value: 'a',
+      },
+    ],
+  },
+  {
+    errors: [],
+    isValid: true,
+  }
+);
+
+test(
+  'keys can be found in random order lists',
+  referenceCheckMacro,
+  {
+    keyrefs: [
+      {
+        path: [],
+        value: 'b',
+      },
+      {
+        path: [],
+        value: 'a',
+      },
+      {
+        path: [],
+        value: 'c',
+      },
+    ],
+    keys: [
+      {
+        path: [],
+        value: 'a',
+      },
+      {
+        path: [],
+        value: 'c',
+      },
+      {
+        path: [],
+        value: 'b',
+      },
+    ],
+  },
+  {
+    errors: [],
+    isValid: true,
+  }
+);
+
+test(
   'no keys or references is valid',
   referenceCheckMacro,
   {
