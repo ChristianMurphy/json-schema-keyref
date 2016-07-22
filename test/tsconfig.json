@@ -2,5 +2,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2015"
-  }
+  },
+  "files": [
+    "referenceCheck.ts",
+    "../typings/index.d.ts"
+  ]
 }

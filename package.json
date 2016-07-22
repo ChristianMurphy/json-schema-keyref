@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src",
-    "pretest": "tsc -p test && tsc -p src",
+    "build": "typings install && tsc -p src",
+    "pretest": "npm run build && tsc -p test",
     "test": "ava && tslint src/*.ts test/*.ts && remark *.md -u remark-lint -q --no-stdout"
   },
   "repository": {
@@ -18,12 +18,16 @@
     "url": "https://github.com/ChristianMurphy/json-schema-keyref/issues"
   },
   "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme",
+  "dependencies": {
+    "jsonpath": "^0.2.6"
+  },
   "devDependencies": {
     "ava": "^0.15.2",
     "remark-cli": "^1.0.0",
     "remark-lint": "^4.0.2",
     "tslint": "^3.13.0",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "typings": "^1.3.2"
   },
   "engines": {
     "node": ">=4.0.0"

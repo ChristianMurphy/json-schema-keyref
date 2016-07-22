@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "jsonpath": "registry:dt/jsonpath#0.1.3+20160316155526"
+  }
+}

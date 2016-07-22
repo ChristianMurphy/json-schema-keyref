@@ -1,13 +1,10 @@
-import {IQueryResult, IValidationResult, referenceCheck} from '../src';
+import {IKeysAndKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
 import test from 'ava';
 
-interface IRefenceCheckInput {
-  key: IQueryResult[];
-  keyref: IQueryResult[];
-}
+interface IRefenceCheckInput extends IKeysAndKeyrefPair<IQueryResult[]> {}
 
 function referenceCheckMacro(t, input: IRefenceCheckInput, expected: IValidationResult) {
-  const result = referenceCheck(input.keyref, input.key);
+  const result = referenceCheck(input.keyrefs, input.keys);
   t.deepEqual(result, expected);
 }
 
@@ -15,13 +12,13 @@ test(
   'key can be found',
   referenceCheckMacro,
   {
-    key: [
+    keyrefs: [
       {
         path: [],
         value: 'a',
       },
     ],
-    keyref: [
+    keys: [
       {
         path: [],
         value: 'a',
@@ -38,8 +35,8 @@ test(
   'no keys or references is valid',
   referenceCheckMacro,
   {
-    key: [],
-    keyref: [],
+    keyrefs: [],
+    keys: [],
   },
   {
     errors: [],
@@ -51,7 +48,13 @@ test(
   'missing reference',
   referenceCheckMacro,
   {
-    key: [
+    keyrefs: [
+      {
+        path: [],
+        value: 'c',
+      },
+    ],
+    keys: [
       {
         path: [],
         value: 'a',
@@ -59,12 +62,6 @@ test(
       {
         path: [],
         value: 'b',
-      },
-    ],
-    keyref: [
-      {
-        path: [],
-        value: 'c',
       },
     ],
   },
@@ -83,17 +80,7 @@ test(
   'multiple missing references',
   referenceCheckMacro,
   {
-    key: [
-      {
-        path: [],
-        value: 'a',
-      },
-      {
-        path: [],
-        value: 'b',
-      },
-    ],
-    keyref: [
+    keyrefs: [
       {
         path: [],
         value: 'c',
@@ -105,6 +92,16 @@ test(
       {
         path: [],
         value: 'e',
+      },
+    ],
+    keys: [
+      {
+        path: [],
+        value: 'a',
+      },
+      {
+        path: [],
+        value: 'b',
       },
     ],
   },
