@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "docs": "cd src && typedoc --tsconfig tsconfig.json --out ../docs",
+    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs",
     "build": "rimraf dist && typings install && tsc -p src",
     "prepublish": "npm test && npm run build",
     "pretest": "typings install && tsc -p test",
