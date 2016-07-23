@@ -8,8 +8,9 @@
     "dist"
   ],
   "scripts": {
-    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs",
     "build": "rimraf dist && typings install && tsc -p src",
+    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs",
+    "posttest": "rimraf src/*.js test/*.js",
     "prepublish": "npm test && npm run build",
     "pretest": "typings install && tsc -p test",
     "test": "ava && tslint src/*.ts test/*.ts && remark *.md -u remark-lint -q --no-stdout"
