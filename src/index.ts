@@ -3,7 +3,15 @@ import {PathComponent, nodes} from 'jsonpath';
 /**
  * Stores a pairing of keys and keyrefs
  *
- * @typeparam U - Object like or Array like structure  
+ * @typeparam U - Object like or Array like structure
+ *
+ * Example:
+ * ``` json
+ * {
+ *   "keyrefs": {},
+ *   "keys": {}
+ * }
+ * ```
  */
 export interface IKeyKeyrefPair<U> {
   /**
@@ -19,7 +27,7 @@ export interface IKeyKeyrefPair<U> {
 
 /**
  * A single result from jsonpath node searched
- * 
+ *
  * Example:
  * ``` json
  * {
@@ -42,7 +50,7 @@ export interface IQueryResult {
 
 /**
  * Feedback format
- * 
+ *
  * Example:
  * ``` json
  * {
@@ -90,7 +98,7 @@ export interface ISchemaDefinition {
 
 /**
  * Keeps list of [[IQueryResult]] associated with identifiers
- * 
+ *
  * Example:
  * ``` json
  * {
@@ -116,6 +124,13 @@ export interface IQueryListing {
  * @param a - first element
  * @param b - second element
  * @return -1 for a less than b, 0 for a equals b, 1 for a greater than b
+ *
+ * Example:
+ * ``` js
+ * querySorter({"path": [], "value": "a"}, {"path": [], "value": "b"}) //=> -1
+ * querySorter({"path": [], "value": true}, {"path": [], "value": true}) //=> 0
+ * querySorter({"path": [], "value": 2}, {"path": [], "value": 1}) //=> 1
+ * ```
  */
 function querySorter(a: IQueryResult, b: IQueryResult): number {
   if (a.value < b.value) {
@@ -133,6 +148,16 @@ function querySorter(a: IQueryResult, b: IQueryResult): number {
  * @param keyrefs - references to a key
  * @param keys - identifier keys
  * @return validity status and any errors found
+ *
+ * Example:
+ * ``` js
+ * var keyrefs = [{"path": ["$", "some", "path"], "value": "example"}];
+ * var keys = [{"path": ["$", "some", "other", "path"], "value": "example"}];
+ *
+ * var result = referenceCheck(keyrefs, keys);
+ *
+ * console.log(result); //=> {"isValid": true, "errors": []}
+ * ```
  */
 export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): IValidationResult {
   keyrefs.sort(querySorter);
@@ -165,11 +190,25 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
 }
 
 /**
- * searches for a set of jsonpath queries.
+ * Searches for a set of jsonpath queries.
  *
  * @param queries - identifier and jsonpath pairings to look up
  * @param document - JSON document that will be searched
  * @return identifier and results pairings found in the document
+ *
+ * Example:
+ * ``` js
+ * var queries = [{"one": "$.a"}, {"two": "$.b"}];
+ * var document = {"a": "something", "b": "something else"};
+ *
+ * var result = lookup(queries, document);
+ *
+ * console.log(result);
+ * // {
+ * //   "one": [{"path": ["$", "a"], "value": "something"}],
+ * //   "two": [{"path": ["$", "b"], "value": "something else"}]
+ * // }
+ * ```
  */
 export function lookup(queries: ISchemaDefinition, document: Object): IQueryListing {
   const results: IQueryListing = {};
