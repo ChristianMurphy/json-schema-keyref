@@ -18,7 +18,15 @@ export interface IKeyKeyrefPair<U> {
 }
 
 /**
- * A single result from jsonpath node search 
+ * A single result from jsonpath node searched
+ * 
+ * Example:
+ * ``` json
+ * {
+ *   "path": ["$", "items", 0],
+ *   "value": "example"
+ * }
+ * ```
  */
 export interface IQueryResult {
   /**
@@ -34,6 +42,19 @@ export interface IQueryResult {
 
 /**
  * Feedback format
+ * 
+ * Example:
+ * ``` json
+ * {
+ *   "isValid": false,
+ *   "errors": [
+ *     {
+ *       "path": ["$", "propery"],
+ *       "value": "example"
+ *     }
+ *   ]
+ * }
+ * ```
  */
 export interface IValidationResult {
   /**
@@ -54,8 +75,8 @@ export interface IValidationResult {
  * ``` json
  * {
  *   "keys": {
- *     "identifier": "jsonpath",
- *     "anotherIdentifier": "jsonpath"
+ *     "identifier": "$.some.query",
+ *     "anotherIdentifier": "$.another.query"
  *   }
  * }
  * ```
@@ -69,6 +90,18 @@ export interface ISchemaDefinition {
 
 /**
  * Keeps list of [[IQueryResult]] associated with identifiers
+ * 
+ * Example:
+ * ``` json
+ * {
+ *   "identifier": [
+ *     {"path": ["$", "property"], "value": "a"}
+ *   ],
+ *   "anotherIdentifier": [
+ *     {"path": ["$", "another", "property"], "value": "b"}
+ *   ]
+ * }
+ * ```
  */
 export interface IQueryListing {
   /**
@@ -132,21 +165,14 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
 }
 
 /**
- * Extracts key and keyref paths from schema, and locates values in document.
+ * searches for a set of jsonpath queries.
  *
- * @param schema - JSON schema with key and keyref set at top level
+ * @param queries - identifier and jsonpath pairings to look up
  * @param document - JSON document that will be searched
- * @return all keys and keyrefs in document
+ * @return identifier and results pairings found in the document
  */
-export function lookup(schema: IKeyKeyrefPair<ISchemaDefinition>, document: Object): IKeyKeyrefPair<IQueryListing> {
-  const keys: IQueryListing = {};
-  const keyrefs: IQueryListing = {};
-
-  Object.keys(schema.keys).forEach(key => keys[key] = nodes(document, schema.keys[key]));
-  Object.keys(schema.keyrefs).forEach(key => keyrefs[key] = nodes(document, schema.keyrefs[key]));
-
-  return {
-    keys,
-    keyrefs,
-  };
+export function lookup(queries: ISchemaDefinition, document: Object): IQueryListing {
+  const results: IQueryListing = {};
+  Object.keys(queries).forEach(identifier => results[identifier] = nodes(document, queries[identifier]));
+  return results;
 }

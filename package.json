@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "docs": "typedoc --module commonjs --mode modules --out docs src typings/index.d.ts",
+    "docs": "cd src && typedoc --tsconfig tsconfig.json --out ../docs",
     "build": "rimraf dist && typings install && tsc -p src",
     "prepublish": "npm test && npm run build",
     "pretest": "typings install && tsc -p test",
