@@ -64,7 +64,17 @@ export interface ISchemaDefinition {
   /**
    * Property is an identifier, value is a json path
    */
-  [key: string]: string;
+  [identifier: string]: string;
+}
+
+/**
+ * Keeps list of [[IQueryResult]] associated with identifiers
+ */
+export interface IQueryListing {
+  /**
+   * Property is an identifier, value is a list of all associated [[IQueryResult]]
+   */
+  [identifier: string]: IQueryResult[];
 }
 
 /**
@@ -128,13 +138,12 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
  * @param document - JSON document that will be searched
  * @return all keys and keyrefs in document
  */
-export function lookup(schema: IKeyKeyrefPair<ISchemaDefinition>, document: Object): IKeyKeyrefPair<IQueryResult[][]> {
-  const keys = Object
-    .keys(schema.keys)
-    .map(key => nodes(document, schema.keys[key]));
-  const keyrefs = Object
-    .keys(schema.keyrefs)
-    .map(keyref => nodes(document, schema.keyrefs[keyref]));
+export function lookup(schema: IKeyKeyrefPair<ISchemaDefinition>, document: Object): IKeyKeyrefPair<IQueryListing> {
+  const keys: IQueryListing = {};
+  const keyrefs: IQueryListing = {};
+
+  Object.keys(schema.keys).forEach(key => keys[key] = nodes(document, schema.keys[key]));
+  Object.keys(schema.keyrefs).forEach(key => keyrefs[key] = nodes(document, schema.keyrefs[key]));
 
   return {
     keys,

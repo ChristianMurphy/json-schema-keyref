@@ -4,6 +4,7 @@
     "target": "es2015"
   },
   "files": [
+    "lookup.ts",
     "referenceCheck.ts",
     "../typings/index.d.ts"
   ]
