@@ -2,73 +2,73 @@ import {IQueryListing, ISchemaDefinition, lookup} from '../src';
 import test from 'ava';
 
 interface IDocumentAndSchema {
-    document: any;
-    queries: ISchemaDefinition;
+  document: any;
+  queries: ISchemaDefinition;
 }
 
 function lookupMacro(t, input: IDocumentAndSchema, expected: IQueryListing) {
-    const result = lookup(input.queries, input.document);
-    t.deepEqual(result, expected);
+  const result = lookup(input.queries, input.document);
+  t.deepEqual(result, expected);
 }
 
 const input1: IDocumentAndSchema = {
-    document: {
-        a: 'b',
-    },
-    queries: {
-        a: '$.a',
-    },
+  document: {
+    a: 'b',
+  },
+  queries: {
+    a: '$.a',
+  },
 };
 const expected1: IQueryListing = {
-    a: [
-        {
-            path: ['$', 'a'],
-            value: 'b',
-        },
-    ],
+  a: [
+    {
+      path: ['$', 'a'],
+      value: 'b',
+    },
+  ],
 };
 
 test(
-    'basic lookup',
-    lookupMacro,
-    input1,
-    expected1
+  'basic lookup',
+  lookupMacro,
+  input1,
+  expected1
 );
 
 const input2: IDocumentAndSchema = {
-    document: {
-        a: 'b',
-        b: {
-            a: 'c',
-            b: {
-                a: 'd',
-            },
-        },
+  document: {
+    a: 'b',
+    b: {
+      a: 'c',
+      b: {
+        a: 'd',
+      },
     },
-    queries: {
-        a: '$..a',
-    },
+  },
+  queries: {
+    a: '$..a',
+  },
 };
 const expected2: IQueryListing = {
-    a: [
-        {
-            path: ['$', 'a'],
-            value: 'b',
-        },
-        {
-            path: ['$', 'b', 'a'],
-            value: 'c',
-        },
-        {
-            path: ['$', 'b', 'b', 'a'],
-            value: 'd',
-        },
-    ],
+  a: [
+    {
+      path: ['$', 'a'],
+      value: 'b',
+    },
+    {
+      path: ['$', 'b', 'a'],
+      value: 'c',
+    },
+    {
+      path: ['$', 'b', 'b', 'a'],
+      value: 'd',
+    },
+  ],
 };
 
 test(
-    'nested lookup',
-    lookupMacro,
-    input2,
-    expected2
+  'nested lookup',
+  lookupMacro,
+  input2,
+  expected2
 );
