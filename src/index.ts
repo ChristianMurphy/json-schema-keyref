@@ -1,18 +1,18 @@
 import {PathComponent, nodes} from 'jsonpath';
 
 /**
- * Stores a pairing of keys and refences to keys
+ * Stores a pairing of keys and keyrefs
  *
  * @typeparam U - Object like or Array like structure  
  */
 export interface IKeyKeyrefPair<U> {
   /**
-   * references to keys
+   * References to keys
    */
   keyrefs: U;
 
   /**
-   * indentifier keys
+   * Indentifier keys
    */
   keys: U;
 }
@@ -22,12 +22,12 @@ export interface IKeyKeyrefPair<U> {
  */
 export interface IQueryResult {
   /**
-   * trace of nodes followed to find value
+   * Trace of nodes followed to find value
    */
   path: PathComponent[];
 
   /**
-   * value that exists at path location
+   * Value that exists at path location
    */
   value: any;
 }
@@ -62,7 +62,7 @@ export interface IValidationResult {
  */
 export interface ISchemaDefinition {
   /**
-   * property is an identifier, value is a json path
+   * Property is an identifier, value is a json path
    */
   [key: string]: string;
 }
@@ -87,8 +87,8 @@ function querySorter(a: IQueryResult, b: IQueryResult): number {
 /**
  * Checks that all keyrefs have an associated key
  *
- * @param keyref - references to a key
- * @param key - identifier keys
+ * @param keyrefs - references to a key
+ * @param keys - identifier keys
  * @return validity status and any errors found
  */
 export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): IValidationResult {
