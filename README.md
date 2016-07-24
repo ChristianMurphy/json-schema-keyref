@@ -6,8 +6,8 @@
 
 ## About
 
-This is an extension to the standard JSON Schema.
-It allows for validating the references to remote values, actually have the value that is being referenced.
+This is an extension to the standard JSON Schema. It allows for validating the
+references to remote values, actually have the value that is being referenced.
 
 See [Example](#example) for a sample use case.
 
@@ -37,11 +37,12 @@ console.log(result); //=> {"errors": [], "isValid": true}
 
 ## Example
 
-Below is a User and Transaction database.
-Where users have an `id` and `name`.
-And transactions are `from` one user `id`, `to` another user `id`, with an `amount`.
+Below is a User and Transaction database. Where users have an `id` and `name`.
+And transactions are `from` one user `id`, `to` another user `id`, with an
+`amount`.
 
-Using key reference validator, transaction 2 would be flagged because user 3 does not exist in the data.
+Using key reference validator, transaction 2 would be flagged because user 3
+does not exist in the data.
 
 Data:
 
