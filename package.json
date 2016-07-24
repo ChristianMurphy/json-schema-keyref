@@ -1,6 +1,6 @@
 {
   "name": "json-schema-keyref",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "a json schema extension that validates key references",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
