@@ -230,7 +230,7 @@ export function lookup(queries: ISchemaDefinition, document: Object): IQueryList
  *   "keys": {"identifier": "$.b"}
  * };
  *
- * var result = validate(schema, document);
+ * var result = validate(document, schema);
  *
  * console.log(result); //=> {"errors": [], "isValid": true}
  * ```
