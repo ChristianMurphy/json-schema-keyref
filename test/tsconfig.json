@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "noImplicitAny": true,
+    "pretty": true,
+    "strictNullChecks": true,
     "target": "es2015"
   },
   "files": [
     "lookup.ts",
     "referenceCheck.ts",
+    "validate.ts",
     "../typings/index.d.ts"
   ]
 }

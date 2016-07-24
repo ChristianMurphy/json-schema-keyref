@@ -54,26 +54,26 @@ export interface IQueryResult {
  * Example:
  * ``` json
  * {
- *   "isValid": false,
  *   "errors": [
  *     {
  *       "path": ["$", "propery"],
  *       "value": "example"
  *     }
- *   ]
+ *   ],
+ *   "isValid": false
  * }
  * ```
  */
 export interface IValidationResult {
   /**
-   * Overall validity status of document
-   */
-  isValid: boolean;
-
-  /**
    * Any errors found
    */
   errors: IQueryResult[];
+
+  /**
+   * Overall validity status of document
+   */
+  isValid: boolean;
 }
 
 /**
@@ -127,9 +127,9 @@ export interface IQueryListing {
  *
  * Example:
  * ``` js
- * querySorter({"path": [], "value": "a"}, {"path": [], "value": "b"}) //=> -1
- * querySorter({"path": [], "value": true}, {"path": [], "value": true}) //=> 0
- * querySorter({"path": [], "value": 2}, {"path": [], "value": 1}) //=> 1
+ * querySorter({"path": [], "value": "a"}, {"path": [], "value": "b"}); //=> -1
+ * querySorter({"path": [], "value": true}, {"path": [], "value": true}); //=> 0
+ * querySorter({"path": [], "value": 2}, {"path": [], "value": 1}); //=> 1
  * ```
  */
 function querySorter(a: IQueryResult, b: IQueryResult): number {
@@ -214,4 +214,52 @@ export function lookup(queries: ISchemaDefinition, document: Object): IQueryList
   const results: IQueryListing = {};
   Object.keys(queries).forEach(identifier => results[identifier] = nodes(document, queries[identifier]));
   return results;
+}
+
+/**
+ * Validates a JSON document against a JSON schema with keyref and key constraints defined
+ *
+ * @param document - document to be validated
+ * @param schema - schema with keyref and key groups defined
+ *
+ * Example:
+ * ``` js
+ * var document = {"a": "value", "b": "value"};
+ * var schema = {
+ *   "keyrefs": {"identifier": "$.a"},
+ *   "keys": {"identifier": "$.b"}
+ * };
+ *
+ * var result = validate(schema, document);
+ *
+ * console.log(result); //=> {"errors": [], "isValid": true}
+ * ```
+ */
+export function validate(document: Object, schema: IKeyKeyrefPair<ISchemaDefinition>): IValidationResult {
+  const keyrefs = lookup(schema.keyrefs, document);
+  const keys = lookup(schema.keys, document);
+
+  return Object.keys(keyrefs)
+    // Check keyrefs and keys for a single identifier group
+    .map(identifier => {
+      // Ensure keyrefs identifier has a matching keys identifier
+      if (!keys[identifier]) {
+        return {errors: [{path: ['$'], value: identifier}], isValid: false};
+      }
+      // Check that keyrefs have matching keys
+      return referenceCheck(keyrefs[identifier], keys[identifier]);
+    })
+    // Merge results from all identifiers together
+    .reduce(
+      (overall, current) => {
+        return {
+          errors: overall.errors.concat(current.errors),
+          isValid: overall.isValid && current.isValid,
+        };
+      },
+      {
+        errors: [],
+        isValid: true,
+      }
+    );
 }

@@ -6,7 +6,7 @@ interface IDocumentAndSchema {
   queries: ISchemaDefinition;
 }
 
-function lookupMacro(t, input: IDocumentAndSchema, expected: IQueryListing) {
+function lookupMacro(t: any, input: IDocumentAndSchema, expected: IQueryListing) {
   const result = lookup(input.queries, input.document);
   t.deepEqual(result, expected);
 }
