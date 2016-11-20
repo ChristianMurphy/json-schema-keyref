@@ -1,5 +1,5 @@
-import {IKeyKeyrefPair, ISchemaDefinition, IValidationResult, validate} from '../src';
 import test from 'ava';
+import {IKeyKeyrefPair, ISchemaDefinition, IValidationResult, validate} from '../src';
 
 interface IDocumentAndSchema {
   document: Object;
@@ -32,7 +32,7 @@ test(
   'basic passing document',
   validateMacro,
   input1,
-  expected1
+  expected1,
 );
 
 const input2: IDocumentAndSchema = {
@@ -55,7 +55,7 @@ test(
   'document with missing key',
   validateMacro,
   input2,
-  expected2
+  expected2,
 );
 
 const input3: IDocumentAndSchema = {
@@ -80,5 +80,5 @@ test(
   'document with keyref and missing key',
   validateMacro,
   input3,
-  expected3
+  expected3,
 );
