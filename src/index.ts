@@ -1,4 +1,4 @@
-import {PathComponent, nodes} from 'jsonpath';
+import {nodes, PathComponent} from 'jsonpath';
 
 /**
  * Stores a pairing of keys and keyrefs
@@ -212,7 +212,7 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
  */
 export function lookup(queries: ISchemaDefinition, document: Object): IQueryListing {
   const results: IQueryListing = {};
-  Object.keys(queries).forEach(identifier => results[identifier] = nodes(document, queries[identifier]));
+  Object.keys(queries).forEach((identifier) => results[identifier] = nodes(document, queries[identifier]));
   return results;
 }
 
@@ -241,7 +241,7 @@ export function validate(document: Object, schema: IKeyKeyrefPair<ISchemaDefinit
 
   return Object.keys(keyrefs)
     // Check keyrefs and keys for a single identifier group
-    .map(identifier => {
+    .map((identifier) => {
       // Ensure keyrefs identifier has a matching keys identifier
       if (!keys[identifier]) {
         return {errors: [{path: ['$'], value: identifier}], isValid: false};
@@ -260,6 +260,6 @@ export function validate(document: Object, schema: IKeyKeyrefPair<ISchemaDefinit
       {
         errors: [],
         isValid: true,
-      }
+      },
     );
 }

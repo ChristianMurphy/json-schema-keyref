@@ -1,5 +1,5 @@
-import {IQueryListing, ISchemaDefinition, lookup} from '../src';
 import test from 'ava';
+import {IQueryListing, ISchemaDefinition, lookup} from '../src';
 
 interface IDocumentAndSchema {
   document: any;
@@ -32,7 +32,7 @@ test(
   'basic lookup',
   lookupMacro,
   input1,
-  expected1
+  expected1,
 );
 
 const input2: IDocumentAndSchema = {
@@ -70,5 +70,5 @@ test(
   'nested lookup',
   lookupMacro,
   input2,
-  expected2
+  expected2,
 );

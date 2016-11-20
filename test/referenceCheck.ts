@@ -1,5 +1,5 @@
-import {IKeyKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
 import test from 'ava';
+import {IKeyKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
 
 function referenceCheckMacro(t: any, input: IKeyKeyrefPair<IQueryResult[]>, expected: IValidationResult) {
   const result = referenceCheck(input.keyrefs, input.keys);
@@ -26,7 +26,7 @@ test(
   {
     errors: [],
     isValid: true,
-  }
+  },
 );
 
 test(
@@ -65,7 +65,7 @@ test(
   {
     errors: [],
     isValid: true,
-  }
+  },
 );
 
 test(
@@ -104,7 +104,7 @@ test(
   {
     errors: [],
     isValid: true,
-  }
+  },
 );
 
 test(
@@ -143,7 +143,7 @@ test(
   {
     errors: [],
     isValid: true,
-  }
+  },
 );
 
 test(
@@ -156,7 +156,7 @@ test(
   {
     errors: [],
     isValid: true,
-  }
+  },
 );
 
 test(
@@ -188,7 +188,7 @@ test(
       },
     ],
     isValid: false,
-  }
+  },
 );
 
 test(
@@ -236,5 +236,5 @@ test(
       },
     ],
     isValid: false,
-  }
+  },
 );
