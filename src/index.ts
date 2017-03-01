@@ -210,7 +210,7 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
  * // }
  * ```
  */
-export function lookup(queries: ISchemaDefinition, document: Object): IQueryListing {
+export function lookup(queries: ISchemaDefinition, document: object): IQueryListing {
   const results: IQueryListing = {};
   Object.keys(queries).forEach((identifier) => results[identifier] = nodes(document, queries[identifier]));
   return results;
@@ -235,7 +235,7 @@ export function lookup(queries: ISchemaDefinition, document: Object): IQueryList
  * console.log(result); //=> {"errors": [], "isValid": true}
  * ```
  */
-export function validate(document: Object, schema: IKeyKeyrefPair<ISchemaDefinition>): IValidationResult {
+export function validate(document: object, schema: IKeyKeyrefPair<ISchemaDefinition>): IValidationResult {
   const keyrefs = lookup(schema.keyrefs, document);
   const keys = lookup(schema.keys, document);
 

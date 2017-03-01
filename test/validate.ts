@@ -2,7 +2,7 @@ import test from 'ava';
 import {IKeyKeyrefPair, ISchemaDefinition, IValidationResult, validate} from '../src';
 
 interface IDocumentAndSchema {
-  document: Object;
+  document: object;
   schema: IKeyKeyrefPair<ISchemaDefinition>;
 }
 
