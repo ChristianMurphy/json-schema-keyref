@@ -11,7 +11,9 @@
     "build": "rimraf dist && typings install && tsc -p src",
     "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs",
     "posttest": "rimraf src/*.js test/*.js",
+    "precommit": "npm test",
     "prepublish": "npm test && npm run build",
+    "prepush": "npm test",
     "pretest": "typings install && tsc -p test",
     "test": "ava && tslint src/*.ts test/*.ts && remark *.md -q --no-stdout"
   },
@@ -41,6 +43,7 @@
   },
   "devDependencies": {
     "ava": "^0.18.2",
+    "husky": "^0.13.1",
     "remark-cli": "^3.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
     "remark-preset-lint-recommended": "^2.0.0",
