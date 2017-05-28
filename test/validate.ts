@@ -6,9 +6,9 @@ interface IDocumentAndSchema {
   schema: IKeyKeyrefPair<ISchemaDefinition>;
 }
 
-function validateMacro(t: any, input: IDocumentAndSchema, expected: IValidationResult) {
-  return validate(input.document, input.schema);
-};
+async function validateMacro(t: any, input: IDocumentAndSchema, expected: IValidationResult) {
+  t.deepEqual(await validate(input.document, input.schema), expected);
+}
 
 const input1: IDocumentAndSchema = {
   document: {
@@ -47,12 +47,12 @@ const input2: IDocumentAndSchema = {
   },
 };
 const expected2: IValidationResult = {
-  errors: [{path: ['$'], value: 'a'}],
+  errors: [{path: ['$'], value: 'one'}],
   isValid: false,
 };
 
 test(
-  'document with missing key',
+  'schema with missing key',
   validateMacro,
   input2,
   expected2,
