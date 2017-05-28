@@ -184,8 +184,8 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
   }
 
   return {
-    isValid,
     errors,
+    isValid,
   };
 }
 
