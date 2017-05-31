@@ -1,5 +1,7 @@
 # JSON Schema KeyRef
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ChristianMurphy/json-schema-keyref.svg)](https://greenkeeper.io/)
+
 [![npm version](https://img.shields.io/npm/v/json-schema-keyref.svg)](https://www.npmjs.com/package/json-schema-keyref)
 [![Build Status](https://travis-ci.org/ChristianMurphy/json-schema-keyref.svg?branch=master)](https://travis-ci.org/ChristianMurphy/json-schema-keyref)
 [![Dependency Status](https://david-dm.org/ChristianMurphy/json-schema-keyref.svg)](https://david-dm.org/ChristianMurphy/json-schema-keyref)
