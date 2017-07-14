@@ -42,7 +42,7 @@
     "jsonpath": "^0.2.11"
   },
   "devDependencies": {
-    "ava": "^0.20.0",
+    "ava": "^0.21.0",
     "husky": "^0.14.0",
     "remark-cli": "^3.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
