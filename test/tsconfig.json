@@ -9,7 +9,6 @@
   "files": [
     "lookup.ts",
     "referenceCheck.ts",
-    "validate.ts",
-    "../typings/index.d.ts"
+    "validate.ts"
   ]
 }
