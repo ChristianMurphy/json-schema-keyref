@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p src",
-    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs",
+    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master",
     "posttest": "rimraf src/*.js test/*.js",
-    "precommit": "npm test & npm run docs",
+    "precommit": "npm test",
     "prepublish": "npm test && npm run build",
     "prepush": "npm test",
     "pretest": "tsc -p test",
