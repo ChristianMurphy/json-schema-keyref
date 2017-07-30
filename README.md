@@ -1,7 +1,8 @@
 # JSON Schema KeyRef
 
 [![npm version](https://img.shields.io/npm/v/json-schema-keyref.svg)](https://www.npmjs.com/package/json-schema-keyref)
-[![Build Status](https://travis-ci.org/ChristianMurphy/json-schema-keyref.svg?branch=master)](https://travis-ci.org/ChristianMurphy/json-schema-keyref)
+[![Linux Build Status](https://travis-ci.org/ChristianMurphy/json-schema-keyref.svg?branch=master)](https://travis-ci.org/ChristianMurphy/json-schema-keyref)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/kb6d2293rbmtoimj/branch/master?svg=true)](https://ci.appveyor.com/project/ChristianMurphy/json-schema-keyref/branch/master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/ChristianMurphy/json-schema-keyref.svg)](https://greenkeeper.io/)
 [![Dependency Status](https://david-dm.org/ChristianMurphy/json-schema-keyref.svg)](https://david-dm.org/ChristianMurphy/json-schema-keyref)
 [![devDependency Status](https://david-dm.org/ChristianMurphy/json-schema-keyref/dev-status.svg)](https://david-dm.org/ChristianMurphy/json-schema-keyref?type=dev)
