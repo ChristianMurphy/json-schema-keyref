@@ -9,6 +9,8 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p src",
+    "commitmsg": "commitlint -e",
+    "cz": "git-cz",
     "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master && nodetouch ../docs/.nojekyll",
     "posttest": "rimraf src/*.js test/*.js",
     "precommit": "npm test",
@@ -41,8 +43,12 @@
     "jsonpath": "^0.2.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^3.1.2",
+    "@commitlint/config-angular": "^3.1.1",
     "@types/jsonpath": "^0.2.0",
     "ava": "^0.22.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.14.0",
     "remark-cli": "^4.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
@@ -61,5 +67,10 @@
       "preset-lint-recommended",
       "preset-lint-consistent"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

@@ -3,6 +3,7 @@ dist
 typings
 *.js
 *.map.js
+!commitlint.config.js
 
 # Created by https://www.gitignore.io/api/node
 
