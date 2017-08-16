@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p src",
+    "commitmsg": "commitlint -e",
     "cz": "git-cz",
     "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master && nodetouch ../docs/.nojekyll",
     "posttest": "rimraf src/*.js test/*.js",
@@ -42,6 +43,8 @@
     "jsonpath": "^0.2.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^3.1.2",
+    "@commitlint/config-angular": "^3.1.1",
     "@types/jsonpath": "^0.2.0",
     "ava": "^0.22.0",
     "commitizen": "^2.9.6",
