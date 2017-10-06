@@ -11,7 +11,7 @@
     "build": "rimraf dist && tsc -p src",
     "commitmsg": "commitlint -e",
     "cz": "git-cz",
-    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master && nodetouch ../docs/.nojekyll",
+    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master . && nodetouch ../docs/.nojekyll",
     "posttest": "rimraf src/*.js test/*.js",
     "precommit": "npm test",
     "prepublish": "npm test && npm run build",
@@ -56,7 +56,7 @@
     "rimraf": "^2.6.1",
     "touch": "^3.1.0",
     "tslint": "~5.7.0",
-    "typedoc": "^0.8.0",
+    "typedoc": "^0.9.0",
     "typescript": "^2.4.0"
   },
   "engines": {
