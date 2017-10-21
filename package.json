@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/ChristianMurphy/json-schema-keyref#readme",
   "dependencies": {
-    "jsonpath": "^0.2.11"
+    "jsonpath": "^1.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^4.0.0",
