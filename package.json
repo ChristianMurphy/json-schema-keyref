@@ -9,13 +9,13 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p src",
-    "commitmsg": "commitlint -e",
-    "cz": "git-cz",
     "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master . && nodetouch ../docs/.nojekyll",
     "posttest": "rimraf src/*.js test/*.js",
     "precommit": "npm test",
     "prepublish": "npm test && npm run build",
     "pretest": "tsc -p test",
+    "commitlint": "commitlint --from HEAD~1",
+    "commitlint-travis": "commitlint-travis",
     "test": "ava && tslint src/*.ts test/*.ts && remark *.md -q --no-stdout"
   },
   "repository": {
@@ -44,11 +44,10 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^5.0.0",
-    "@commitlint/config-angular": "^5.0.0",
+    "@commitlint/config-conventional": "^5.0.0",
+    "@commitlint/travis-cli": "^5.2.8",
     "@types/jsonpath": "^0.2.0",
     "ava": "^0.24.0",
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.14.0",
     "remark-cli": "^4.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
@@ -68,9 +67,23 @@
       "preset-lint-consistent"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "config:base"
+    ],
+    "automerge": true,
+    "major": {
+      "automerge": false
+    },
+    "lockFileMaintenance": {
+      "enabled": true
+    },
+    "semanticPrefix": "chore:",
+    "semanticCommitScope": ""
   }
 }
