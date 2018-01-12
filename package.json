@@ -43,7 +43,7 @@
     "jsonpath": "^1.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "6.0.1",
+    "@commitlint/cli": "6.0.2",
     "@commitlint/config-conventional": "5.2.3",
     "@commitlint/travis-cli": "6.0.1",
     "@types/jsonpath": "0.2.0",
