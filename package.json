@@ -49,7 +49,7 @@
     "@types/jsonpath": "0.2.0",
     "ava": "0.24.0",
     "husky": "0.14.3",
-    "remark-cli": "4.0.0",
+    "remark-cli": "5.0.0",
     "remark-preset-lint-consistent": "2.0.1",
     "remark-preset-lint-recommended": "3.0.1",
     "rimraf": "2.6.2",
