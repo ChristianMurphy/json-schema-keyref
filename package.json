@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "6.1.0",
-    "@commitlint/config-conventional": "6.0.4",
+    "@commitlint/config-conventional": "6.1.0",
     "@commitlint/travis-cli": "6.0.5",
     "@types/jsonpath": "0.2.0",
     "ava": "0.25.0",
