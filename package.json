@@ -1,14 +1,15 @@
 {
   "name": "json-schema-keyref",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "a json schema extension that validates key references",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf dist && tsc -p src",
-    "docs":
-      "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master . && nodetouch ../docs/.nojekyll",
+    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --mode modules --out ../docs --gitRevision master . && nodetouch ../docs/.nojekyll",
     "posttest": "rimraf src/*.js test/*.js",
     "precommit": "npm test",
     "prepublish": "npm test && npm run build",
@@ -21,7 +22,13 @@
     "type": "git",
     "url": "git+https://github.com/ChristianMurphy/json-schema-keyref.git"
   },
-  "keywords": ["json", "schema", "key", "keyref", "validator"],
+  "keywords": [
+    "json",
+    "schema",
+    "key",
+    "keyref",
+    "validator"
+  ],
   "author": {
     "name": "Christian Murphy",
     "email": "Christian.Murphy.42@gmail.com",
@@ -55,13 +62,20 @@
     "node": ">=6.0.0"
   },
   "remarkConfig": {
-    "plugins": ["preset-lint-recommended", "preset-lint-consistent"]
+    "plugins": [
+      "preset-lint-recommended",
+      "preset-lint-consistent"
+    ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "renovate": {
-    "extends": ["config:base"],
+    "extends": [
+      "config:base"
+    ],
     "automerge": true,
     "major": {
       "automerge": false
