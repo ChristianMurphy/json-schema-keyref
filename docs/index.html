@@ -82,10 +82,9 @@
 				<p>See <a href="#example">Example</a> for a sample use case.</p>
 				<h2 id="installation">Installation</h2>
 				<p>Install from npm</p>
-				<pre><code class="lang-sh">npm install --save json-schema-keyref
-</code></pre>
+				<pre><code class="language-sh">npm install --save json-schema-keyref</code></pre>
 				<h2 id="usage">Usage</h2>
-				<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+				<pre><code class="language-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
 <span class="hljs-keyword">var</span> jsonSchemaKeyref = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-schema-keyref'</span>);
 
 <span class="hljs-keyword">var</span> <span class="hljs-built_in">document</span> = <span class="hljs-built_in">JSON</span>.parse(fs.readSync(<span class="hljs-string">'document.json'</span>));
@@ -95,8 +94,7 @@
 
 <span class="hljs-keyword">var</span> result = jsonSchemaKeyref.validate(<span class="hljs-built_in">document</span>, schema);
 
-<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//=&gt; {"errors": [], "isValid": true}</span>
-</code></pre>
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//=&gt; {"errors": [], "isValid": true}</span></code></pre>
 				<h2 id="example">Example</h2>
 				<p>Below is a User and Transaction database. Where users have an <code>id</code> and <code>name</code>.
 					And transactions are <code>from</code> one user <code>id</code>, <code>to</code> another user <code>id</code>, with an
@@ -104,7 +102,7 @@
 				<p>Using key reference validator, transaction 2 would be flagged because user 3
 				does not exist in the data.</p>
 				<p>Data:</p>
-				<pre><code class="lang-json">{
+				<pre><code class="language-json">{
   <span class="hljs-attr">"users"</span>: [
     {
       <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
@@ -127,10 +125,9 @@
       <span class="hljs-attr">"amount"</span>: <span class="hljs-number">99.99</span>
     }
   ]
-}
-</code></pre>
+}</code></pre>
 				<p>Schema:</p>
-				<pre><code class="lang-json">{
+				<pre><code class="language-json">{
   <span class="hljs-attr">"key"</span>: {
     <span class="hljs-attr">"to"</span>: <span class="hljs-string">"$.users[*].id"</span>,
     <span class="hljs-attr">"from"</span>: <span class="hljs-string">"$.users[*].id"</span>
@@ -177,8 +174,7 @@
     <span class="hljs-string">"users"</span>,
     <span class="hljs-string">"transactions"</span>
   ]
-}
-</code></pre>
+}</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

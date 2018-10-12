@@ -130,7 +130,7 @@
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_index_.iquerylisting.html" class="tsd-signature-type">IQueryListing</a></h4>
 							<p>identifier and results pairings found in the document</p>
 							<p>Example:</p>
-							<pre><code class="lang-js"><span class="hljs-keyword">var</span> queries = [{<span class="hljs-string">"one"</span>: <span class="hljs-string">"$.a"</span>}, {<span class="hljs-string">"two"</span>: <span class="hljs-string">"$.b"</span>}];
+							<pre><code class="language-js"><span class="hljs-keyword">var</span> queries = [{<span class="hljs-string">"one"</span>: <span class="hljs-string">"$.a"</span>}, {<span class="hljs-string">"two"</span>: <span class="hljs-string">"$.b"</span>}];
 <span class="hljs-keyword">var</span> <span class="hljs-built_in">document</span> = {<span class="hljs-string">"a"</span>: <span class="hljs-string">"something"</span>, <span class="hljs-string">"b"</span>: <span class="hljs-string">"something else"</span>};
 
 <span class="hljs-keyword">var</span> result = lookup(queries, <span class="hljs-built_in">document</span>);
@@ -139,8 +139,7 @@
 <span class="hljs-comment">// {</span>
 <span class="hljs-comment">//   "one": [{"path": ["$", "a"], "value": "something"}],</span>
 <span class="hljs-comment">//   "two": [{"path": ["$", "b"], "value": "something else"}]</span>
-<span class="hljs-comment">// }</span>
-</code></pre>
+<span class="hljs-comment">// }</span></code></pre>
 						</li>
 					</ul>
 				</section>
@@ -180,10 +179,9 @@
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							<p>-1 for a less than b, 0 for a equals b, 1 for a greater than b</p>
 							<p>Example:</p>
-							<pre><code class="lang-js">querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-string">"a"</span>}, {<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-string">"b"</span>}); <span class="hljs-comment">//=&gt; -1</span>
+							<pre><code class="language-js">querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-string">"a"</span>}, {<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-string">"b"</span>}); <span class="hljs-comment">//=&gt; -1</span>
 querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-literal">true</span>}, {<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-literal">true</span>}); <span class="hljs-comment">//=&gt; 0</span>
-querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-number">2</span>}, {<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-number">1</span>}); <span class="hljs-comment">//=&gt; 1</span>
-</code></pre>
+querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-number">2</span>}, {<span class="hljs-string">"path"</span>: [], <span class="hljs-string">"value"</span>: <span class="hljs-number">1</span>}); <span class="hljs-comment">//=&gt; 1</span></code></pre>
 						</li>
 					</ul>
 				</section>
@@ -223,13 +221,12 @@ querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-stri
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_index_.ivalidationresult.html" class="tsd-signature-type">IValidationResult</a></h4>
 							<p>validity status and any errors found</p>
 							<p>Example:</p>
-							<pre><code class="lang-js"><span class="hljs-keyword">var</span> keyrefs = [{<span class="hljs-string">"path"</span>: [<span class="hljs-string">"$"</span>, <span class="hljs-string">"some"</span>, <span class="hljs-string">"path"</span>], <span class="hljs-string">"value"</span>: <span class="hljs-string">"example"</span>}];
+							<pre><code class="language-js"><span class="hljs-keyword">var</span> keyrefs = [{<span class="hljs-string">"path"</span>: [<span class="hljs-string">"$"</span>, <span class="hljs-string">"some"</span>, <span class="hljs-string">"path"</span>], <span class="hljs-string">"value"</span>: <span class="hljs-string">"example"</span>}];
 <span class="hljs-keyword">var</span> keys = [{<span class="hljs-string">"path"</span>: [<span class="hljs-string">"$"</span>, <span class="hljs-string">"some"</span>, <span class="hljs-string">"other"</span>, <span class="hljs-string">"path"</span>], <span class="hljs-string">"value"</span>: <span class="hljs-string">"example"</span>}];
 
 <span class="hljs-keyword">var</span> result = referenceCheck(keyrefs, keys);
 
-<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//=&gt; {"isValid": true, "errors": []}</span>
-</code></pre>
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//=&gt; {"isValid": true, "errors": []}</span></code></pre>
 						</li>
 					</ul>
 				</section>
@@ -264,7 +261,7 @@ querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-stri
 									<div class="tsd-comment tsd-typography">
 										<p>schema with keyref and key groups defined</p>
 										<p>Example:</p>
-										<pre><code class="lang-js"><span class="hljs-keyword">var</span> <span class="hljs-built_in">document</span> = {<span class="hljs-string">"a"</span>: <span class="hljs-string">"value"</span>, <span class="hljs-string">"b"</span>: <span class="hljs-string">"value"</span>};
+										<pre><code class="language-js"><span class="hljs-keyword">var</span> <span class="hljs-built_in">document</span> = {<span class="hljs-string">"a"</span>: <span class="hljs-string">"value"</span>, <span class="hljs-string">"b"</span>: <span class="hljs-string">"value"</span>};
 <span class="hljs-keyword">var</span> schema = {
   <span class="hljs-string">"keyrefs"</span>: {<span class="hljs-string">"identifier"</span>: <span class="hljs-string">"$.a"</span>},
   <span class="hljs-string">"keys"</span>: {<span class="hljs-string">"identifier"</span>: <span class="hljs-string">"$.b"</span>}
@@ -272,8 +269,7 @@ querySorter({<span class="hljs-string">"path"</span>: [], <span class="hljs-stri
 
 <span class="hljs-keyword">var</span> result = validate(<span class="hljs-built_in">document</span>, schema);
 
-<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//=&gt; {"errors": [], "isValid": true}</span>
-</code></pre>
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//=&gt; {"errors": [], "isValid": true}</span></code></pre>
 									</div>
 								</li>
 							</ul>
