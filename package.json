@@ -46,7 +46,7 @@
     "@commitlint/config-conventional": "8.3.4",
     "@commitlint/travis-cli": "8.3.5",
     "@types/jsonpath": "0.2.0",
-    "ava": "3.4.0",
+    "ava": "3.5.0",
     "husky": "4.2.3",
     "remark-cli": "7.0.1",
     "remark-preset-lint-consistent": "2.0.3",
