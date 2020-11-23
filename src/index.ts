@@ -1,4 +1,4 @@
-import {nodes, PathComponent} from 'jsonpath';
+import { nodes, PathComponent } from "jsonpath";
 
 /**
  * Stores a pairing of keys and keyrefs
@@ -159,7 +159,10 @@ function querySorter(a: IQueryResult, b: IQueryResult): number {
  * console.log(result); //=> {"isValid": true, "errors": []}
  * ```
  */
-export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): IValidationResult {
+export function referenceCheck(
+  keyrefs: IQueryResult[],
+  keys: IQueryResult[]
+): IValidationResult {
   keyrefs.sort(querySorter);
   keys.sort(querySorter);
 
@@ -185,7 +188,7 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
 
   return {
     errors,
-    isValid,
+    isValid
   };
 }
 
@@ -210,9 +213,14 @@ export function referenceCheck(keyrefs: IQueryResult[], keys: IQueryResult[]): I
  * // }
  * ```
  */
-export function lookup(queries: ISchemaDefinition, document: object): IQueryListing {
+export function lookup(
+  queries: ISchemaDefinition,
+  document: object
+): IQueryListing {
   const results: IQueryListing = {};
-  Object.keys(queries).forEach((identifier) => results[identifier] = nodes(document, queries[identifier]));
+  Object.keys(queries).forEach(
+    identifier => (results[identifier] = nodes(document, queries[identifier]))
+  );
   return results;
 }
 
@@ -235,31 +243,39 @@ export function lookup(queries: ISchemaDefinition, document: object): IQueryList
  * console.log(result); //=> {"errors": [], "isValid": true}
  * ```
  */
-export function validate(document: object, schema: IKeyKeyrefPair<ISchemaDefinition>): IValidationResult {
+export function validate(
+  document: object,
+  schema: IKeyKeyrefPair<ISchemaDefinition>
+): IValidationResult {
   const keyrefs = lookup(schema.keyrefs, document);
   const keys = lookup(schema.keys, document);
 
-  return Object.keys(keyrefs)
-    // Check keyrefs and keys for a single identifier group
-    .map((identifier) => {
-      // Ensure keyrefs identifier has a matching keys identifier
-      if (!keys[identifier]) {
-        return {errors: [{path: ['$'], value: identifier}], isValid: false};
-      }
-      // Check that keyrefs have matching keys
-      return referenceCheck(keyrefs[identifier], keys[identifier]);
-    })
-    // Merge results from all identifiers together
-    .reduce(
-      (overall, current) => {
-        return {
-          errors: overall.errors.concat(current.errors),
-          isValid: overall.isValid && current.isValid,
-        };
-      },
-      {
-        errors: [],
-        isValid: true,
-      },
-    );
+  return (
+    Object.keys(keyrefs)
+      // Check keyrefs and keys for a single identifier group
+      .map(identifier => {
+        // Ensure keyrefs identifier has a matching keys identifier
+        if (!keys[identifier]) {
+          return {
+            errors: [{ path: ["$"], value: identifier }],
+            isValid: false
+          };
+        }
+        // Check that keyrefs have matching keys
+        return referenceCheck(keyrefs[identifier], keys[identifier]);
+      })
+      // Merge results from all identifiers together
+      .reduce(
+        (overall, current) => {
+          return {
+            errors: overall.errors.concat(current.errors),
+            isValid: overall.isValid && current.isValid
+          };
+        },
+        {
+          errors: [],
+          isValid: true
+        }
+      )
+  );
 }

@@ -1,240 +1,249 @@
-import test from 'ava';
-import {IKeyKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
+import test from "ava";
+import {
+  IKeyKeyrefPair,
+  IQueryResult,
+  IValidationResult,
+  referenceCheck
+} from "../src";
 
-function referenceCheckMacro(t: any, input: IKeyKeyrefPair<IQueryResult[]>, expected: IValidationResult) {
+function referenceCheckMacro(
+  t: any,
+  input: IKeyKeyrefPair<IQueryResult[]>,
+  expected: IValidationResult
+) {
   const result = referenceCheck(input.keyrefs, input.keys);
   t.deepEqual(result, expected);
 }
 
 test(
-  'key can be found',
+  "key can be found",
   referenceCheckMacro,
   {
     keyrefs: [
       {
         path: [],
-        value: 'a',
-      },
+        value: "a"
+      }
     ],
     keys: [
       {
         path: [],
-        value: 'a',
-      },
-    ],
+        value: "a"
+      }
+    ]
   },
   {
     errors: [],
-    isValid: true,
-  },
+    isValid: true
+  }
 );
 
 test(
-  'keys can be found in ordered lists',
+  "keys can be found in ordered lists",
   referenceCheckMacro,
   {
     keyrefs: [
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'b',
+        value: "b"
       },
       {
         path: [],
-        value: 'c',
-      },
+        value: "c"
+      }
     ],
     keys: [
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'b',
+        value: "b"
       },
       {
         path: [],
-        value: 'c',
-      },
-    ],
+        value: "c"
+      }
+    ]
   },
   {
     errors: [],
-    isValid: true,
-  },
+    isValid: true
+  }
 );
 
 test(
-  'keys can be found in opposting ordered lists',
+  "keys can be found in opposting ordered lists",
   referenceCheckMacro,
   {
     keyrefs: [
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'b',
+        value: "b"
       },
       {
         path: [],
-        value: 'c',
-      },
+        value: "c"
+      }
     ],
     keys: [
       {
         path: [],
-        value: 'c',
+        value: "c"
       },
       {
         path: [],
-        value: 'b',
+        value: "b"
       },
       {
         path: [],
-        value: 'a',
-      },
-    ],
+        value: "a"
+      }
+    ]
   },
   {
     errors: [],
-    isValid: true,
-  },
+    isValid: true
+  }
 );
 
 test(
-  'keys can be found in random order lists',
+  "keys can be found in random order lists",
   referenceCheckMacro,
   {
     keyrefs: [
       {
         path: [],
-        value: 'b',
+        value: "b"
       },
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'c',
-      },
+        value: "c"
+      }
     ],
     keys: [
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'c',
+        value: "c"
       },
       {
         path: [],
-        value: 'b',
-      },
-    ],
+        value: "b"
+      }
+    ]
   },
   {
     errors: [],
-    isValid: true,
-  },
+    isValid: true
+  }
 );
 
 test(
-  'no keys or references is valid',
+  "no keys or references is valid",
   referenceCheckMacro,
   {
     keyrefs: [],
-    keys: [],
+    keys: []
   },
   {
     errors: [],
-    isValid: true,
-  },
+    isValid: true
+  }
 );
 
 test(
-  'missing reference',
+  "missing reference",
   referenceCheckMacro,
   {
     keyrefs: [
       {
         path: [],
-        value: 'c',
-      },
+        value: "c"
+      }
     ],
     keys: [
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'b',
-      },
-    ],
+        value: "b"
+      }
+    ]
   },
   {
     errors: [
       {
         path: [],
-        value: 'c',
-      },
+        value: "c"
+      }
     ],
-    isValid: false,
-  },
+    isValid: false
+  }
 );
 
 test(
-  'multiple missing references',
+  "multiple missing references",
   referenceCheckMacro,
   {
     keyrefs: [
       {
         path: [],
-        value: 'c',
+        value: "c"
       },
       {
         path: [],
-        value: 'd',
+        value: "d"
       },
       {
         path: [],
-        value: 'e',
-      },
+        value: "e"
+      }
     ],
     keys: [
       {
         path: [],
-        value: 'a',
+        value: "a"
       },
       {
         path: [],
-        value: 'b',
-      },
-    ],
+        value: "b"
+      }
+    ]
   },
   {
     errors: [
       {
         path: [],
-        value: 'c',
+        value: "c"
       },
       {
         path: [],
-        value: 'd',
+        value: "d"
       },
       {
         path: [],
-        value: 'e',
-      },
+        value: "e"
+      }
     ],
-    isValid: false,
-  },
+    isValid: false
+  }
 );
