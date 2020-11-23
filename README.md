@@ -1,17 +1,8 @@
 # JSON Schema KeyRef
 
-<!-- current project status -->
 [![npm version](https://img.shields.io/npm/v/json-schema-keyref.svg)](https://www.npmjs.com/package/json-schema-keyref)
 [![Linux Build Status](https://travis-ci.org/ChristianMurphy/json-schema-keyref.svg?branch=master)](https://travis-ci.org/ChristianMurphy/json-schema-keyref)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/kb6d2293rbmtoimj/branch/master?svg=true)](https://ci.appveyor.com/project/ChristianMurphy/json-schema-keyref/branch/master)
-[![Dependency Status](https://david-dm.org/ChristianMurphy/json-schema-keyref.svg)](https://david-dm.org/ChristianMurphy/json-schema-keyref)
-[![devDependency Status](https://david-dm.org/ChristianMurphy/json-schema-keyref/dev-status.svg)](https://david-dm.org/ChristianMurphy/json-schema-keyref?type=dev)
-
-<!-- standards and technologies used in project -->
-[![Built with TypeScript](https://img.shields.io/badge/built_with-typescript-blue.svg)](https://www.typescriptlang.org/)
-[![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![TSLint recommended code style](https://img.shields.io/badge/code_style-TSLint-brightgreen.svg?style=flat)](https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts)
 
 ## About
 
