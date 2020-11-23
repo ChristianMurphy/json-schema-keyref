@@ -215,7 +215,7 @@ export function referenceCheck(
  */
 export function lookup(
   queries: ISchemaDefinition,
-  document: object
+  document: unknown
 ): IQueryListing {
   const results: IQueryListing = {};
   Object.keys(queries).forEach(

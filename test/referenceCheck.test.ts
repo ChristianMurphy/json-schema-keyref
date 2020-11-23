@@ -1,4 +1,3 @@
-import test from "ava";
 import {
   IKeyKeyrefPair,
   IQueryResult,
@@ -15,235 +14,228 @@ function referenceCheckMacro(
   t.deepEqual(result, expected);
 }
 
-test(
-  "key can be found",
-  referenceCheckMacro,
-  {
-    keyrefs: [
-      {
-        path: [],
-        value: "a"
-      }
-    ],
-    keys: [
-      {
-        path: [],
-        value: "a"
-      }
-    ]
-  },
-  {
-    errors: [],
-    isValid: true
-  }
-);
-
-test(
-  "keys can be found in ordered lists",
-  referenceCheckMacro,
-  {
-    keyrefs: [
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "b"
-      },
-      {
-        path: [],
-        value: "c"
-      }
-    ],
-    keys: [
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "b"
-      },
-      {
-        path: [],
-        value: "c"
-      }
-    ]
-  },
-  {
-    errors: [],
-    isValid: true
-  }
-);
-
-test(
-  "keys can be found in opposting ordered lists",
-  referenceCheckMacro,
-  {
-    keyrefs: [
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "b"
-      },
-      {
-        path: [],
-        value: "c"
-      }
-    ],
-    keys: [
-      {
-        path: [],
-        value: "c"
-      },
-      {
-        path: [],
-        value: "b"
-      },
-      {
-        path: [],
-        value: "a"
-      }
-    ]
-  },
-  {
-    errors: [],
-    isValid: true
-  }
-);
-
-test(
-  "keys can be found in random order lists",
-  referenceCheckMacro,
-  {
-    keyrefs: [
-      {
-        path: [],
-        value: "b"
-      },
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "c"
-      }
-    ],
-    keys: [
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "c"
-      },
-      {
-        path: [],
-        value: "b"
-      }
-    ]
-  },
-  {
-    errors: [],
-    isValid: true
-  }
-);
-
-test(
-  "no keys or references is valid",
-  referenceCheckMacro,
-  {
-    keyrefs: [],
-    keys: []
-  },
-  {
-    errors: [],
-    isValid: true
-  }
-);
-
-test(
-  "missing reference",
-  referenceCheckMacro,
-  {
-    keyrefs: [
-      {
-        path: [],
-        value: "c"
-      }
-    ],
-    keys: [
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "b"
-      }
-    ]
-  },
-  {
-    errors: [
-      {
-        path: [],
-        value: "c"
-      }
-    ],
-    isValid: false
-  }
-);
-
-test(
-  "multiple missing references",
-  referenceCheckMacro,
-  {
-    keyrefs: [
-      {
-        path: [],
-        value: "c"
-      },
-      {
-        path: [],
-        value: "d"
-      },
-      {
-        path: [],
-        value: "e"
-      }
-    ],
-    keys: [
-      {
-        path: [],
-        value: "a"
-      },
-      {
-        path: [],
-        value: "b"
-      }
-    ]
-  },
-  {
-    errors: [
-      {
-        path: [],
-        value: "c"
-      },
-      {
-        path: [],
-        value: "d"
-      },
-      {
-        path: [],
-        value: "e"
-      }
-    ],
-    isValid: false
-  }
-);
+describe.each<[string, IKeyKeyrefPair<IQueryResult[]>, IValidationResult]>([
+  [
+    "key can be found",
+    {
+      keyrefs: [
+        {
+          path: [],
+          value: "a"
+        }
+      ],
+      keys: [
+        {
+          path: [],
+          value: "a"
+        }
+      ]
+    },
+    {
+      errors: [],
+      isValid: true
+    }
+  ],
+  [
+    "keys can be found in ordered lists",
+    {
+      keyrefs: [
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "b"
+        },
+        {
+          path: [],
+          value: "c"
+        }
+      ],
+      keys: [
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "b"
+        },
+        {
+          path: [],
+          value: "c"
+        }
+      ]
+    },
+    {
+      errors: [],
+      isValid: true
+    }
+  ],
+  [
+    "keys can be found in opposting ordered lists",
+    {
+      keyrefs: [
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "b"
+        },
+        {
+          path: [],
+          value: "c"
+        }
+      ],
+      keys: [
+        {
+          path: [],
+          value: "c"
+        },
+        {
+          path: [],
+          value: "b"
+        },
+        {
+          path: [],
+          value: "a"
+        }
+      ]
+    },
+    {
+      errors: [],
+      isValid: true
+    }
+  ],
+  [
+    "keys can be found in random order lists",
+    {
+      keyrefs: [
+        {
+          path: [],
+          value: "b"
+        },
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "c"
+        }
+      ],
+      keys: [
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "c"
+        },
+        {
+          path: [],
+          value: "b"
+        }
+      ]
+    },
+    {
+      errors: [],
+      isValid: true
+    }
+  ],
+  [
+    "no keys or references is valid",
+    {
+      keyrefs: [],
+      keys: []
+    },
+    {
+      errors: [],
+      isValid: true
+    }
+  ],
+  [
+    "missing reference",
+    {
+      keyrefs: [
+        {
+          path: [],
+          value: "c"
+        }
+      ],
+      keys: [
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "b"
+        }
+      ]
+    },
+    {
+      errors: [
+        {
+          path: [],
+          value: "c"
+        }
+      ],
+      isValid: false
+    }
+  ],
+  [
+    "multiple missing references",
+    {
+      keyrefs: [
+        {
+          path: [],
+          value: "c"
+        },
+        {
+          path: [],
+          value: "d"
+        },
+        {
+          path: [],
+          value: "e"
+        }
+      ],
+      keys: [
+        {
+          path: [],
+          value: "a"
+        },
+        {
+          path: [],
+          value: "b"
+        }
+      ]
+    },
+    {
+      errors: [
+        {
+          path: [],
+          value: "c"
+        },
+        {
+          path: [],
+          value: "d"
+        },
+        {
+          path: [],
+          value: "e"
+        }
+      ],
+      isValid: false
+    }
+  ]
+])("%s", (description, input, expected) => {
+  test(description, () => {
+    expect(referenceCheck(input.keyrefs, input.keys)).toEqual(expected);
+  });
+});

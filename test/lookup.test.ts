@@ -1,68 +1,56 @@
-import test from "ava";
 import { IQueryListing, ISchemaDefinition, lookup } from "../src";
 
-interface IDocumentAndSchema {
-  document: any;
-  queries: ISchemaDefinition;
-}
-
-function lookupMacro(
-  t: any,
-  input: IDocumentAndSchema,
-  expected: IQueryListing
-) {
-  const result = lookup(input.queries, input.document);
-  t.deepEqual(result, expected);
-}
-
-const input1: IDocumentAndSchema = {
-  document: {
-    a: "b"
-  },
-  queries: {
-    a: "$.a"
-  }
-};
-const expected1: IQueryListing = {
-  a: [
+describe.each<[string, unknown, ISchemaDefinition, IQueryListing]>([
+  [
+    "basic lookup",
     {
-      path: ["$", "a"],
-      value: "b"
+      a: "b"
+    },
+    {
+      a: "$.a"
+    },
+    {
+      a: [
+        {
+          path: ["$", "a"],
+          value: "b"
+        }
+      ]
     }
-  ]
-};
-
-test("basic lookup", lookupMacro, input1, expected1);
-
-const input2: IDocumentAndSchema = {
-  document: {
-    a: "b",
-    b: {
-      a: "c",
+  ],
+  [
+    "nested lookup",
+    {
+      a: "b",
       b: {
-        a: "d"
+        a: "c",
+        b: {
+          a: "d"
+        }
       }
-    }
-  },
-  queries: {
-    a: "$..a"
-  }
-};
-const expected2: IQueryListing = {
-  a: [
-    {
-      path: ["$", "a"],
-      value: "b"
     },
     {
-      path: ["$", "b", "a"],
-      value: "c"
+      a: "$..a"
     },
     {
-      path: ["$", "b", "b", "a"],
-      value: "d"
+      a: [
+        {
+          path: ["$", "a"],
+          value: "b"
+        },
+        {
+          path: ["$", "b", "a"],
+          value: "c"
+        },
+        {
+          path: ["$", "b", "b", "a"],
+          value: "d"
+        }
+      ]
     }
   ]
-};
-
-test("nested lookup", lookupMacro, input2, expected2);
+])("%s", (description, document, schema, expected) => {
+  test(description, () => {
+    expect(lookup(schema, document)).toEqual(expected);
+  });
+});
