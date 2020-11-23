@@ -1,8 +1,7 @@
 # JSON Schema KeyRef
 
 [![npm version](https://img.shields.io/npm/v/json-schema-keyref.svg)](https://www.npmjs.com/package/json-schema-keyref)
-[![Linux Build Status](https://travis-ci.org/ChristianMurphy/json-schema-keyref.svg?branch=master)](https://travis-ci.org/ChristianMurphy/json-schema-keyref)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/kb6d2293rbmtoimj/branch/master?svg=true)](https://ci.appveyor.com/project/ChristianMurphy/json-schema-keyref/branch/master)
+![Build Status](https://github.com/ChristianMurphy/json-schema-keyref/workflows/CI/badge.svg?branch=main)
 
 ## About
 
