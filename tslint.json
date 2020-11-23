@@ -1,8 +1,0 @@
-{
-  "extends": "tslint:latest",
-  "rules":{
-    "quotemark": [true, "single"],
-    "no-inferrable-types": true,
-    "no-implicit-dependencies": [true, "dev"]
-  }
-}
