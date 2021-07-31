@@ -1,7 +1,7 @@
 # JSON Schema KeyRef
 
 [![npm version](https://img.shields.io/npm/v/json-schema-keyref.svg)](https://www.npmjs.com/package/json-schema-keyref)
-![Build Status](https://github.com/ChristianMurphy/json-schema-keyref/workflows/CI/badge.svg?branch=main)
+[![build status](https://github.com/ChristianMurphy/json-schema-keyref/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ChristianMurphy/json-schema-keyref/actions/workflows/CI.yml)
 
 ## About
 
@@ -21,15 +21,15 @@ npm install --save json-schema-keyref
 ## Usage
 
 ``` js
-var fs = require('fs');
-var jsonSchemaKeyref = require('json-schema-keyref');
+const fs = require('fs');
+const jsonSchemaKeyref = require('json-schema-keyref');
 
-var document = JSON.parse(fs.readSync('document.json'));
-var schema = JSON.parse(fs.readSync('schema.json'));
+const document = JSON.parse(fs.readSync('document.json'));
+const schema = JSON.parse(fs.readSync('schema.json'));
 
 // Validate document against standard JSON schema using tv4 or another library
 
-var result = jsonSchemaKeyref.validate(document, schema);
+const result = jsonSchemaKeyref.validate(document, schema);
 
 console.log(result); //=> {"errors": [], "isValid": true}
 ```
