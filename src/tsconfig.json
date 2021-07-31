@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    "strictNullChecks": true,
+    "strict": true,
     "declaration": true,
     "module": "commonjs",
     "noEmitOnError": true,
-    "noImplicitAny": true,
     "outDir": "../dist",
     "sourceMap": true,
     "target": "es5",

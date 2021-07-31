@@ -1,4 +1,4 @@
-import test from 'ava';
+import test, {ExecutionContext} from 'ava';
 import {IKeyKeyrefPair, ISchemaDefinition, IValidationResult, validate} from '../src';
 
 interface IDocumentAndSchema {
@@ -6,7 +6,7 @@ interface IDocumentAndSchema {
   schema: IKeyKeyrefPair<ISchemaDefinition>;
 }
 
-async function validateMacro(t: any, input: IDocumentAndSchema, expected: IValidationResult) {
+async function validateMacro(t: ExecutionContext, input: IDocumentAndSchema, expected: IValidationResult) {
   t.deepEqual(await validate(input.document, input.schema), expected);
 }
 

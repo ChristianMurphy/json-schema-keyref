@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "noImplicitAny": true,
+    "strict": true,
     "pretty": true,
-    "strictNullChecks": true,
     "target": "es2015"
   },
   "files": [
