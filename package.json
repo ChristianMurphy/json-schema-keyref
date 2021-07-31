@@ -14,7 +14,6 @@
     "prepublishOnly": "npm test && npm run build",
     "pretest": "tsc -p test && type-coverage",
     "commitlint": "commitlint --from HEAD~1",
-    "commitlint-travis": "commitlint-travis",
     "format": "eslint --fix .",
     "test": "ava && eslint . && remark *.md -q --no-stdout",
     "prepare": "husky install"
