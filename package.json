@@ -15,7 +15,8 @@
     "pretest": "tsc -p test",
     "commitlint": "commitlint --from HEAD~1",
     "commitlint-travis": "commitlint-travis",
-    "test": "ava && tslint src/*.ts test/*.ts && remark *.md -q --no-stdout"
+    "test": "ava && tslint src/*.ts test/*.ts && remark *.md -q --no-stdout",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,7 @@
     "@commitlint/config-conventional": "13.1.0",
     "@types/jsonpath": "0.2.0",
     "ava": "3.15.0",
-    "husky": "7.0.1",
+    "husky": "^7.0.0",
     "remark-cli": "9.0.0",
     "remark-preset-lint-consistent": "4.0.0",
     "remark-preset-lint-recommended": "5.0.0",
@@ -83,10 +84,5 @@
     },
     "semanticPrefix": "chore:",
     "semanticCommitScope": ""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
   }
 }
