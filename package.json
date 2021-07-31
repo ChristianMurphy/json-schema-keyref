@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p src && type-coverage",
-    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs --gitRevision master . && nodetouch ../docs/.nojekyll",
+    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs --gitRevision main . && nodetouch ../docs/.nojekyll",
     "posttest": "rimraf src/*.js test/*.js",
     "prepublishOnly": "npm test && npm run build",
     "pretest": "tsc -p test && type-coverage",
