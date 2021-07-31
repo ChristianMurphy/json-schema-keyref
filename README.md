@@ -14,18 +14,18 @@ See [Example](#example) for a sample use case.
 
 Install from npm
 
-``` sh
+```sh
 npm install --save json-schema-keyref
 ```
 
 ## Usage
 
-``` js
-const fs = require('fs');
-const jsonSchemaKeyref = require('json-schema-keyref');
+```js
+const fs = require("fs");
+const jsonSchemaKeyref = require("json-schema-keyref");
 
-const document = JSON.parse(fs.readSync('document.json'));
-const schema = JSON.parse(fs.readSync('schema.json'));
+const document = JSON.parse(fs.readSync("document.json"));
+const schema = JSON.parse(fs.readSync("schema.json"));
 
 // Validate document against standard JSON schema using tv4 or another library
 
@@ -45,7 +45,7 @@ does not exist in the data.
 
 Data:
 
-``` json
+```json
 {
   "users": [
     {
@@ -61,7 +61,7 @@ Data:
     {
       "from": 1,
       "to": 2,
-      "amount": 1.00
+      "amount": 1.0
     },
     {
       "from": 3,
@@ -74,7 +74,7 @@ Data:
 
 Schema:
 
-``` json
+```json
 {
   "key": {
     "to": "$.users[*].id",
@@ -98,10 +98,7 @@ Schema:
           "type": "string"
         }
       },
-      "required": [
-        "id",
-        "name"
-      ]
+      "required": ["id", "name"]
     },
     "transactions": {
       "type": "object",
@@ -118,9 +115,6 @@ Schema:
       }
     }
   },
-  "required": [
-    "users",
-    "transactions"
-  ]
+  "required": ["users", "transactions"]
 }
 ```
