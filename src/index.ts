@@ -45,7 +45,7 @@ export interface IQueryResult {
   /**
    * Value that exists at path location
    */
-  value: any;
+  value: string | number | boolean;
 }
 
 /**

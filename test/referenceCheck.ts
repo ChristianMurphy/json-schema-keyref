@@ -1,7 +1,7 @@
-import test from 'ava';
+import test, {ExecutionContext} from 'ava';
 import {IKeyKeyrefPair, IQueryResult, IValidationResult, referenceCheck} from '../src';
 
-function referenceCheckMacro(t: any, input: IKeyKeyrefPair<IQueryResult[]>, expected: IValidationResult) {
+function referenceCheckMacro(t: ExecutionContext, input: IKeyKeyrefPair<IQueryResult[]>, expected: IValidationResult) {
   const result = referenceCheck(input.keyrefs, input.keys);
   t.deepEqual(result, expected);
 }

@@ -1,12 +1,12 @@
-import test from 'ava';
+import test, {ExecutionContext} from 'ava';
 import {IQueryListing, ISchemaDefinition, lookup} from '../src';
 
 interface IDocumentAndSchema {
-  document: any;
+  document: object;
   queries: ISchemaDefinition;
 }
 
-function lookupMacro(t: any, input: IDocumentAndSchema, expected: IQueryListing) {
+function lookupMacro(t: ExecutionContext, input: IDocumentAndSchema, expected: IQueryListing) {
   const result = lookup(input.queries, input.document);
   t.deepEqual(result, expected);
 }
