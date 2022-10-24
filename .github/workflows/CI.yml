@@ -10,12 +10,12 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [16]
+        node-version: [18]
         include:
           - platform: ubuntu-latest
-            node-version: 14
+            node-version: 16
           - platform: ubuntu-latest
-            node-version: 12
+            node-version: 14
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
