@@ -4,7 +4,7 @@ import {
   ISchemaDefinition,
   IValidationResult,
   validate,
-} from "../src";
+} from "../src/index.js";
 
 interface IDocumentAndSchema {
   document: Record<string, unknown>;

@@ -2,17 +2,17 @@
   "name": "json-schema-keyref",
   "version": "4.0.0",
   "description": "a json schema extension that validates key references",
+  "type": "module",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && tsc -p src && type-coverage",
-    "docs": "rimraf docs && cd src && typedoc --tsconfig tsconfig.json --out ../docs --gitRevision main . && nodetouch ../docs/.nojekyll",
-    "posttest": "rimraf src/*.js test/*.js",
+    "build": "rimraf dist && tsc && type-coverage",
+    "docs": "rimraf docs && cd src && typedoc --out ../docs --gitRevision main . && nodetouch ../docs/.nojekyll",
     "prepublishOnly": "npm test && npm run build",
-    "pretest": "tsc -p test && type-coverage",
+    "pretest": "type-coverage",
     "commitlint": "commitlint --from HEAD~1",
     "format": "eslint --fix .",
     "test": "ava && eslint . && remark *.md -q --no-stdout",
@@ -48,7 +48,7 @@
     "@types/jsonpath": "0.2.0",
     "@typescript-eslint/eslint-plugin": "5.41.0",
     "@typescript-eslint/parser": "5.41.0",
-    "ava": "4.3.3",
+    "ava": "5.0.1",
     "eslint": "8.26.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
@@ -59,9 +59,10 @@
     "remark-preset-lint-recommended": "6.1.2",
     "rimraf": "3.0.2",
     "touch": "3.1.0",
+    "ts-node": "^10.9.1",
     "type-coverage": "2.22.0",
-    "typedoc": "0.22.18",
-    "typescript": "4.3.5"
+    "typedoc": "0.23.18",
+    "typescript": "4.8.4"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -97,6 +98,14 @@
     "strict": true,
     "ignoreFiles": [
       "dist/*"
+    ]
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm"
     ]
   }
 }

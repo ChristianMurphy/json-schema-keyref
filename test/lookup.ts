@@ -1,5 +1,5 @@
 import test, { ExecutionContext } from "ava";
-import { IQueryListing, ISchemaDefinition, lookup } from "../src";
+import { IQueryListing, ISchemaDefinition, lookup } from "../src/index.js";
 
 interface IDocumentAndSchema {
   document: Record<string, unknown>;
