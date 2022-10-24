@@ -1,4 +1,6 @@
-import { nodes, PathComponent } from "jsonpath";
+import jsonpath, { PathComponent } from "jsonpath";
+
+const { nodes } = jsonpath;
 
 /**
  * Stores a pairing of keys and keyrefs

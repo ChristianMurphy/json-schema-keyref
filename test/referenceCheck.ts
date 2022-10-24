@@ -4,7 +4,7 @@ import {
   IQueryResult,
   IValidationResult,
   referenceCheck,
-} from "../src";
+} from "../src/index.js";
 
 function referenceCheckMacro(
   t: ExecutionContext,
