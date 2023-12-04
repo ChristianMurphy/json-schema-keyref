@@ -45,7 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.6.7",
     "@commitlint/config-conventional": "17.6.7",
-    "@types/jsonpath": "0.2.0",
+    "@types/jsonpath": "0.2.4",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "ava": "4.3.3",
