@@ -51,7 +51,7 @@
     "ava": "4.3.3",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-prettier": "5.2.1",
     "husky": "8.0.3",
     "prettier": "2.8.8",
     "remark-cli": "11.0.0",
